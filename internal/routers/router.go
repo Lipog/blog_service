@@ -14,10 +14,14 @@ func NewRouter() *gin.Engine {
 	tag := v1.NewTag()
 	apiv1 := r.Group("/api/v1")
 	{
+		//新增标签
 		apiv1.POST("/tags", tag.Create)
+		//删除指定的标签
 		apiv1.DELETE("/tags/:id", tag.Delete)
+		//更新指定的标签
 		apiv1.PUT("/tags/:id", tag.Update)
 		apiv1.PATCH("/tags/:id/state", tag.Update)
+		//获取标签列表
 		apiv1.GET("/tags", tag.List)
 
 		apiv1.POST("/articles", article.Create)
