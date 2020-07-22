@@ -1,2 +1,5 @@
 2020/07/22 18:04:28 {"callers":["C:/Users/Lip/Desktop/数据结构200题/demo/blog-service/main.go: 27 main.init.0"],"level":"info","message":"deeycjy: go-programing-tour-book/blog-service","time":1595412268362271600}
 2020/07/22 18:05:59 {"callers":["C:/Users/Lip/Desktop/数据结构200题/demo/blog-service/main.go: 27 main.init.0"],"level":"info","message":"deeycjy: go-programing-tour-book/blog-service","time":1595412359065344500}
+2020/07/22 18:31:56 {"callers":["C:/Users/Lip/Desktop/数据结构200题/demo/blog-service/main.go: 27 main.init.0"],"level":"info","message":"deeycjy: go-programing-tour-book/blog-service","time":1595413916310040500}
+2020/07/22 18:32:10 {"callers":["C:/Users/Lip/Desktop/数据结构200题/demo/blog-service/main.go: 27 main.init.0"],"level":"info","message":"deeycjy: go-programing-tour-book/blog-service","time":1595413930592990700}
+2020/07/22 18:34:31 {"callers":["C:/Users/Lip/Desktop/数据结构200题/demo/blog-service/main.go: 27 main.init.0"],"level":"info","message":"deeycjy: go-programing-tour-book/blog-service","time":1595414071627271100}
