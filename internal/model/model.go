@@ -1,5 +1,13 @@
 package model
 
+import (
+	"blog-service/global"
+	"blog-service/pkg/setting"
+	"fmt"
+	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
+)
+
 type Model struct {
 	ID uint32 `gorm:"primary_key" json"id"`
 	CreatedBy string `json"created_by"`
@@ -8,5 +16,27 @@ type Model struct {
 	ModifiedOn uint32 `json:"modified_on"`
 	DeleteOn uint32 `json:"deleted_on"`
 	IsDel uint8 `json:"is_del"`
+}
+
+func NewDBEngine(databaseSetting *setting.DatabaseSettingS) (*gorm.DB, error) {
+	db, err := gorm.Open(databaseSetting.DBType,
+		fmt.Sprintf("%s:%s@tcp(%s)/%s?parseTime=%t&loc=Local",
+			databaseSetting.UserName,
+			databaseSetting.Password,
+			databaseSetting.Host,
+			databaseSetting.DBName,
+			databaseSetting.ParseTime,
+			))
+	if err != nil {
+		return nil, err
+	}
+	if global.ServerSetting.RunMode == "debug" {
+		db.LogMode(true)
+	}
+
+	db.SingularTable(true)
+	db.DB().SetMaxOpenConns(databaseSetting.MaxOpenConns)
+	db.DB().SetMaxIdleConns(databaseSetting.MaxIdleConns)
+	return db, nil
 }
 

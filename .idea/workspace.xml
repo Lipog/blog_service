@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c36686b3-8cc6-46f3-b6bc-7a81d3eb3af9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/configs/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/setting/setting.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/global/db.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/setting.go" beforeDir="false" afterPath="$PROJECT_DIR$/global/setting.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/model/model.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/model.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
