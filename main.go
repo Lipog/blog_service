@@ -4,8 +4,10 @@ import (
 	"blog-service/global"
 	"blog-service/internal/model"
 	"blog-service/internal/routers"
+	"blog-service/pkg/logger"
 	"blog-service/pkg/setting"
 	"github.com/gin-gonic/gin"
+	"gopkg.in/natefinch/lumberjack.v2"
 	"log"
 	"net/http"
 	"time"
@@ -21,6 +23,8 @@ func init() {
 	if err != nil {
 		log.Fatalf("init.setupDBEngine err: %v", err)
 	}
+
+	setupLogger()
 }
 
 func main() {
@@ -33,7 +37,7 @@ func main() {
 		WriteTimeout: global.ServerSetting.WriteTimeout,
 		MaxHeaderBytes: 1 << 20,
 	}
-
+	global.Logger.Infof("%s: go-programing-tour-book/%s", "deeycjy", "blog-service")
 	s.ListenAndServe()
 }
 
@@ -66,5 +70,15 @@ func setupDBEngine() error {
 	if err != nil {
 		return err
 	}
+	return nil
+}
+
+func setupLogger() error {
+	global.Logger = logger.NewLogger(&lumberjack.Logger{
+		Filename: global.AppSetting.LogSavePath + "/" + global.AppSetting.LogFileName + global.AppSetting.LogFileExt,
+		MaxSize: 600,
+		MaxAge: 10,
+		LocalTime: true,
+	}, "", log.LstdFlags).WithCaller(2)
 	return nil
 }

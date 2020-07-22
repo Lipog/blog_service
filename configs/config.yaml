@@ -8,7 +8,7 @@ Server:
 App:
   DefaultPageSize: 10
   MaxPageSize: 100
-  LogSavePath: storage/logs
+  LogSavePath: ./storage/logs
   LogFileName: app
   LogFileExt: .log
 #数据库配置，主要是连接实例所必须的基础参数
