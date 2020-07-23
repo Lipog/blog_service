@@ -13,6 +13,11 @@ func (d *Dao) CountTag(name string, state uint8) (int, error) {
 	return tag.Count(d.engine)
 }
 
+func (d *Dao) GetTag(id uint32) (*model.Tag, error) {
+	tag := model.Tag{}
+	return tag.GetTag(d.engine, id)
+}
+
 func (d *Dao) GetTagList(name string, state uint8, page, pageSize int) ([]*model.Tag, error) {
 	tag := model.Tag{Name:name, State:state}
 	pageOffset := app.GetPageOffset(page, pageSize)

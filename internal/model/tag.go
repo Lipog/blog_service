@@ -29,6 +29,15 @@ func (t Tag) Count(db *gorm.DB) (int, error) {
 	return count, nil
 }
 
+func (t Tag) GetTag(db *gorm.DB, id uint32) (*Tag, error) {
+	var tag *Tag
+	err := db.Model(&t).Where("id = ? and is_del = ?", id, 0).Error
+	if err != nil && err != gorm.ErrRecordNotFound {
+		return tag, err
+	}
+	return tag, nil
+}
+
 func (t Tag) List(db *gorm.DB, pageOffset, pageSize int) ([]*Tag, error) {
 	var tags []*Tag
 	var err error
@@ -40,7 +49,7 @@ func (t Tag) List(db *gorm.DB, pageOffset, pageSize int) ([]*Tag, error) {
 	}
 	db = db.Where("state = ?", t.State)
 	//获取所有匹配的记录
-	if err = db.Where("id_del = ?", 0).Find(&tags).Error; err != nil {
+	if err = db.Where("is_del = ?", 0).Find(&tags).Error; err != nil {
 		return nil, err
 	}
 	return tags, nil

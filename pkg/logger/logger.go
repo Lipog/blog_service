@@ -12,7 +12,7 @@ import (
 
 type Level int8
 
-type Fileds map[string]interface{}
+type Fields map[string]interface{}
 
 const (
 	LevelDebug Level = iota
@@ -47,7 +47,7 @@ type Logger struct {
 	newLogger *log.Logger
 	ctx context.Context
 	level Level
-	fields Fileds
+	fields Fields
 	callers []string
 }
 
@@ -69,10 +69,10 @@ func (l *Logger) WithLevel(lvl Level) *Logger {
 }
 
 //设置日志的公共字段
-func (l *Logger) WithFields(f Fileds) *Logger {
+func (l *Logger) WithFields(f Fields) *Logger {
 	l1 := l.clone()
 	if l1.fields == nil {
-		l1.fields = make(Fileds)
+		l1.fields = make(Fields)
 	}
 	for k, v := range f {
 		l1.fields[k] = v
@@ -120,7 +120,7 @@ func (l *Logger) WithCallersFrames() *Logger {
 
 //这里是日志的格式化和输出部分
 func (l *Logger) JSONFormat(message string) map[string]interface{} {
-	data := make(Fileds, len(l.fields) + 4)
+	data := make(Fields, len(l.fields) + 4)
 	data["level"] = l.level.String()
 	data["time"] = time.Now().Local().UnixNano()
 	data["message"] = message

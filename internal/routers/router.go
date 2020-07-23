@@ -1,6 +1,7 @@
 package routers
 
 import (
+	"blog-service/internal/middleware"
 	v1 "blog-service/internal/routers/api/v1"
 	"github.com/gin-gonic/gin"
 )
@@ -10,9 +11,11 @@ func NewRouter() *gin.Engine {
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
 
+
 	article := v1.NewArticle()
 	tag := v1.NewTag()
 	apiv1 := r.Group("/api/v1")
+	apiv1.Use(middleware.JWT())
 	{
 		//新增标签
 		apiv1.POST("/tags", tag.Create)
