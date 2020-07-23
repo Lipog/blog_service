@@ -15,7 +15,7 @@ type Model struct {
 	ModifiedBy string `json:"modified_by"`
 	CreatedOn uint32 `json:"created_on"`
 	ModifiedOn uint32 `json:"modified_on"`
-	DeleteOn uint32 `json:"deleted_on"`
+	DeleteOn uint32 `json:"delete_on"`
 	IsDel uint8 `json:"is_del"`
 }
 
